@@ -33,26 +33,24 @@ function Dashboard() {
   }
 
   return (
-    <div className="dashboard">
+    <div className="container mx-auto px-4 py-8">
       {user.role === 'employee' && employeeDetails ? (
         <>
-          <h1>Welcome to your Dashboard, {employeeDetails.name}!</h1>
-          <div className="user-info">
-            <p>Employee ID: {employeeDetails.id}</p>
-            <p>Role: {user.role}</p>
-            {/* Add more employee-specific information here */}
+          <h1 className="text-3xl font-bold mb-6  text-gray-800">Welcome to your Dashboard, {employeeDetails.name}!</h1>
+          <div className="bg-white shadow-md rounded-lg p-6">
+            <p className="text-lg mb-2  text-gray-700">Employee ID: {employeeDetails.id}</p>
+            <p className="text-lg mb-2  text-gray-700">Role: {user.role}</p>
           </div>
         </>
       ) : (
         <>
-          <h1>Welcome to your Dashboard!</h1>
-          <div className="user-info">
-            <p>User ID: {user.id}</p>
-            <p>Role: {user.role}</p>
+          <h1 className="text-3xl font-bold mb-6 text-gray-800">Welcome to your Dashboard!</h1>
+          <div className="bg-white shadow-md rounded-lg p-6">
+            <p className="text-lg mb-2 text-gray-700">User ID: {user.id}</p>
+            <p className="text-lg mb-2 text-gray-700">Role: {user.role}</p>
           </div>
         </>
       )}
-    
     </div>
   );
 }

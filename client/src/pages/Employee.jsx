@@ -34,11 +34,13 @@ function Employees() {
   }
 
   return (
-    <div className="employees">
-      <h1>Employees</h1>
-      <ul>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-6 text-gray-800">Employees</h1>
+      <ul className="bg-white shadow-md rounded-lg divide-y">
         {employees.map(employee => (
-          <li key={employee.id}>{employee.name}</li>
+          <li key={employee.id} className="px-4 py-3 hover:bg-gray-50 text-gray-700">
+            {employee.name}
+          </li>
         ))}
       </ul>
     </div>

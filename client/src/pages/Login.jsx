@@ -44,16 +44,17 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {error && <p style={{color: 'red'}}>{error}</p>}
-      <form onSubmit={handleSubmit}>
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-xl">
+      <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+      {error && <p className="text-red-500 mb-4">{error}</p>}
+      <form onSubmit={handleSubmit} className="space-y-4">
         <input 
           name="email" 
           placeholder="Email" 
           value={data.email} 
           onChange={handleChange} 
           disabled={isLoading}
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <input 
           name="password" 
@@ -62,8 +63,13 @@ export default function Login() {
           value={data.password} 
           onChange={handleChange} 
           disabled={isLoading}
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <button type="submit" disabled={isLoading}>
+        <button 
+          type="submit" 
+          disabled={isLoading}
+          className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300"
+        >
           {isLoading ? 'Logging in...' : 'Login'}
         </button>
       </form>

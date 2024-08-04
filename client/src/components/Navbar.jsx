@@ -1,74 +1,41 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';  // Adjust this import path as needed
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
   const { user, logout } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
-    // Optionally, you can add a redirect here if needed
-    // navigate('/');
+    navigate('/')
   };
 
   return (
-    <nav style={styles.nav}>
-      <Link to='/' style={styles.link}>Home</Link>
-      {user ? (
-        <div style={styles.userSection}>
-          <Link to='/dashboard' style={styles.link}>Dashboard</Link>
-          {user.role === 'employee' && (
-            <>
-              <Link to='/employees' style={styles.link}>Employees</Link>
-              <Link to='/carmodels' style={styles.link}>Car Models</Link>
-              <Link to='/total-sales' style={styles.link}>Total Sales</Link>
-            </>
-          )}
-          <span style={styles.welcomeMessage}>Welcome, {user.email} ({user.role})</span>
-          <button onClick={handleLogout} style={styles.logoutButton}>Logout</button>
-        </div>
-      ) : (
-        <div style={styles.authSection}>
-          <Link to='/login' style={styles.link}>Login</Link>
-          <Link to='/register' style={styles.link}>Register</Link>
-        </div>
-      )}
+    <nav className="bg-gray-800 p-4">
+      <div className="container mx-auto flex justify-between items-center">
+        <Link to='/' className="text-white font-bold text-xl">Home</Link>
+        {user ? (
+          <div className="flex items-center space-x-4">
+            <Link to='/dashboard' className="text-white hover:text-gray-300">Dashboard</Link>
+            {user.role === 'employee' && (
+              <>
+                <Link to='/employees' className="text-white hover:text-gray-300">Employees</Link>
+                <Link to='/carmodels' className="text-white hover:text-gray-300">Car Models</Link>
+                <Link to='/total-sales' className="text-white hover:text-gray-300">Total Sales</Link>
+              </>
+            )}
+            <span className="text-gray-300">Welcome, {user.email} ({user.role})</span>
+            <button onClick={handleLogout} className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Logout</button>
+          </div>
+        ) : (
+          <div className="space-x-4">
+            <Link to='/login' className="text-white hover:text-gray-300">Login</Link>
+            <Link to='/register' className="text-white hover:text-gray-300">Register</Link>
+          </div>
+        )}
+      </div>
     </nav>
   );
 }
-
-const styles = {
-  nav: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '1rem',
-    backgroundColor: '#f8f9fa',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-  },
-  link: {
-    textDecoration: 'none',
-    color: '#007bff',
-    marginRight: '1rem',
-    fontWeight: 'bold',
-  },
-  userSection: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  authSection: {
-    display: 'flex',
-  },
-  welcomeMessage: {
-    marginRight: '1rem',
-    color: '#6c757d',
-  },
-  logoutButton: {
-    padding: '0.5rem 1rem',
-    backgroundColor: '#dc3545',
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-  },
-};

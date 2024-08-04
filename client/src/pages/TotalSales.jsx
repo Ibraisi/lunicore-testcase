@@ -28,24 +28,26 @@ export default function TotalSales() {
   }
 
   return (
-    <div className="total-sales">
-      <h1>Total Sales</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Employee Name</th>
-            <th>Total Sales</th>
-          </tr>
-        </thead>
-        <tbody>
-          {salesData.map(employee => (
-            <tr key={employee.id}>
-              <td>{employee.name}</td>
-              <td>${employee.sales.toLocaleString()}</td>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-6  text-gray-800 ">Total Sales</h1>
+      <div className="overflow-x-auto">
+        <table className="w-full bg-white shadow-md rounded-lg">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">Employee Name</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">Total Sales</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
+            {salesData.map(employee => (
+              <tr key={employee.id}>
+                <td className="px-6 py-4 whitespace-nowrap  text-gray-700">{employee.name}</td>
+                <td className="px-6 py-4 whitespace-nowrap  text-gray-700">${employee.sales.toLocaleString()}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

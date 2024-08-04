@@ -36,15 +36,41 @@ export default function Register() {
   }
 
   return (
-    <div>
-      <h2>Register</h2>
-      {error && <p style={{color: 'red'}}>{error}</p>}
-      {success && <p style={{color: 'green'}}>Registration successful!</p>}
-      <form onSubmit={handleSubmit}>
-        <input name="email" placeholder="Email" value={data.email} onChange={handleChange} required />
-        <input name="password" type="password" placeholder="Password" value={data.password} onChange={handleChange} required />
-        <input name="id"  placeholder="employee id" value={data.id} onChange={handleChange}/>
-        <button type="submit">Register</button>
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-xl">
+      <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
+      {error && <p className="text-red-500 mb-4">{error}</p>}
+      {success && <p className="text-green-500 mb-4">Registration successful!</p>}
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <input 
+          name="email" 
+          placeholder="Email" 
+          value={data.email} 
+          onChange={handleChange} 
+          required
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <input 
+          name="password" 
+          type="password" 
+          placeholder="Password" 
+          value={data.password} 
+          onChange={handleChange} 
+          required
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <input 
+          name="id"  
+          placeholder="Employee ID" 
+          value={data.id} 
+          onChange={handleChange}
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button 
+          type="submit"
+          className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition duration-300"
+        >
+          Register
+        </button>
       </form>
     </div>
   )
