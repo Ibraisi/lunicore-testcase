@@ -3,18 +3,14 @@
 ## Getting Started
 
 1. Set up the server:
-   \`\`\`
    cd server
-   npm install
-   npm run dev
-   \`\`\`
+   `npm install`
+   `npm run dev`
 
 2. Set up the client:
-   \`\`\`
-   cd ../client
-   npm install
-   npm run dev
-   \`\`\`
+   `cd ../client`
+  ` npm install`
+   `npm run dev`
 
 ## Requirements
 
@@ -43,6 +39,7 @@ const AppDataSource = new DataSource({
   database: "myapp",
   // ... other configurations
 });
+```
 
 The application uses TypeORM with the following entities:
 
@@ -58,12 +55,9 @@ Ensure your database is set up to accommodate these models.
 Once everything is set up, you can run both the server and client concurrently:
 
 In the server directory:
-\`\`\`
-npm run dev
-\`\`\`
+`npm run dev`
+
 
 In a separate terminal, in the client directory:
-\`\`\`
-npm run dev
-\`\`\`
+`npm run dev`
 
