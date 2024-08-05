@@ -30,7 +30,12 @@ export default function Login() {
       // Store token securely (this is a simplified example)
       sessionStorage.setItem('token', token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      navigate('/dashboard');
+      console.log(user)
+      if(user.role === 'employee'){
+        navigate('/dashboard');
+      }else{ 
+             navigate('/')
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         setError(error.response?.data?.message || 'An error occurred during login');

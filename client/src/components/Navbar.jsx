@@ -18,12 +18,12 @@ export default function Navbar() {
         <Link to='/' className="text-white font-bold text-xl">Home</Link>
         {user ? (
           <div className="flex items-center space-x-4">
-            <Link to='/dashboard' className="text-white hover:text-gray-300">Dashboard</Link>
-            {user.role === 'employee' && (
-              <>
                 <Link to='/employees' className="text-white hover:text-gray-300">Employees</Link>
                 <Link to='/carmodels' className="text-white hover:text-gray-300">Car Models</Link>
                 <Link to='/total-sales' className="text-white hover:text-gray-300">Total Sales</Link>
+            {user.role === 'employee' && (
+              <>
+                <Link to='/dashboard' className="text-white hover:text-gray-300">Dashboard</Link>
               </>
             )}
             <span className="text-gray-300">Welcome, {user.email} ({user.role})</span>
